@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>BFH Holzingenieure 2026 | Abschlussreise Porto</title>
+  <style>
+    :root {
+      --azul: #095f9e;
+      --azul-dark: #073a5f;
+      --vinho: #6d1d3c;
+      --terracotta: #c66b32;
+      --verde: #28745a;
+      --areia: #f4ead8;
+      --papel: #fffaf0;
+      --ink: #17202c;
+      --muted: #637083;
+      --line: rgba(23, 32, 44, 0.14);
+      --soft: rgba(255, 250, 240, 0.84);
+      --radius: 14px;
+      --shadow: 0 20px 60px rgba(7, 58, 95, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(9,95,158,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(9,95,158,.04) 1px, transparent 1px),
+        #f7f1e6;
+      background-size: 32px 32px;
+      line-height: 1.45;
+    }
+
+    a { color: var(--azul); font-weight: 780; text-underline-offset: .18em; }
+    img { max-width: 100%; display: block; }
+
+    .hero {
+      position: relative;
+      min-height: 76vh;
+      color: #fff;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(3,22,38,.88), rgba(3,22,38,.52) 54%, rgba(109,29,60,.34)),
+        url("assets/porto_hero.jpg") center/cover;
+      display: grid;
+      align-items: end;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(0deg, #f7f1e6 0%, rgba(247,241,230,0) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 105px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      border: 1px solid rgba(255,255,255,.34);
+      background: rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 20px 0 14px;
+      font-size: clamp(3.2rem, 8.2vw, 7.6rem);
+      line-height: .88;
+      letter-spacing: -.06em;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255,255,255,.9);
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+    }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .hero-fact {
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-weight: 850;
+    }
+
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,250,240,.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .tabs {
+      width: min(1220px, calc(100% - 20px));
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: thin;
+    }
+
+    .tab {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--azul-dark);
+      padding: 9px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-weight: 880;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: var(--azul-dark);
+      color: #fff;
+      border-color: var(--azul-dark);
+    }
+    .tab.sos-tab {
+      background: #fff;
+      color: #9f1d2f;
+      border-color: rgba(159,29,47,.34);
+    }
+    .tab.sos-tab.active {
+      background: #9f1d2f;
+      color: #fff;
+      border-color: #9f1d2f;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 3;
+      width: min(1220px, calc(100% - 28px));
+      margin: -66px auto 90px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(255,250,240,.88);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 40px;
+      border: 0;
+      border-radius: 10px;
+      padding: 9px 12px;
+      background: var(--vinho);
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn.secondary { background: var(--azul-dark); }
+    .btn.light { background: #fff; color: var(--azul-dark); border: 1px solid var(--line); }
+    .btn.sos-action { background: #9f1d2f; }
+
+    .panel { display: none; }
+    .panel.active { display: block; animation: fade .18s ease; }
+    @keyframes fade { from { opacity: .55; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin: 26px 0 16px;
+    }
+    .eyebrow {
+      color: var(--vinho);
+      font-size: .76rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 4px 0 0;
+      font-size: clamp(1.8rem, 4vw, 3.35rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+    .section-head p { margin: 8px 0 0; color: var(--muted); max-width: 760px; }
+
+    .hero-map {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+    .map-photo {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #fff;
+      min-height: 420px;
+    }
+    .map-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .embed-map {
+      width: 100%;
+      min-height: 470px;
+      border: 0;
+      display: block;
+      filter: saturate(.96) contrast(1.03);
+    }
+    .map-card {
+      min-height: 470px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .intro-panel {
+      display: grid;
+      align-content: end;
+      gap: 12px;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(255,250,240,.98), rgba(255,250,240,.72));
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow);
+    }
+    .big-number { font-size: clamp(3rem, 7vw, 5rem); font-weight: 950; line-height: .9; letter-spacing: -.06em; color: var(--vinho); }
+    .muted { color: var(--muted); }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1.4fr .9fr .9fr;
+      gap: 12px;
+      margin: 14px 0 24px;
+    }
+    .photo-strip figure {
+      margin: 0;
+      position: relative;
+      min-height: 250px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #ddd;
+    }
+    .photo-strip figure:first-child { min-height: 360px; }
+    .photo-strip img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-strip figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 15px;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(0deg, rgba(0,0,0,.68), rgba(0,0,0,0));
+    }
+
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .feature {
+      border-top: 1px solid var(--line);
+      padding: 16px 0;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .feature:first-child { border-top: 0; }
+    .feature img {
+      width: 180px;
+      height: 128px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #ddd;
+    }
+    .feature h3 { margin: 0 0 5px; font-size: 1.18rem; letter-spacing: -.02em; }
+    .feature p { margin: 0; color: var(--muted); }
+
+    .card {
+      border-radius: var(--radius);
+      background: rgba(255,250,240,.78);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .card.pad { padding: 18px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.15rem; letter-spacing: -.02em; }
+    .card p { margin: 0; color: var(--muted); }
+    .card img { width: 100%; height: 210px; object-fit: cover; }
+    .card-body { padding: 15px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
+    .chip {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #e9f2f7;
+      color: var(--azul-dark);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+    .chip.wine { background: #f6e3e9; color: var(--vinho); }
+    .chip.green { background: #e3f2eb; color: var(--verde); }
+    .chip.sun { background: #faedcf; color: #7a4b17; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .mini-link {
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 9px;
+      border-radius: 9px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--azul-dark);
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 850;
+    }
+
+    .timeline { display: grid; gap: 18px; }
+    .day {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,250,240,.86);
+      box-shadow: 0 14px 42px rgba(7, 58, 95, 0.09);
+    }
+    .day-date {
+      min-height: 100%;
+      padding: 18px;
+      color: #fff;
+      background:
+        linear-gradient(150deg, rgba(7,58,95,.94), rgba(109,29,60,.86)),
+        url("assets/porto_hero.jpg") center/cover;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+    .day-date b { display: block; color: rgba(255,255,255,.74); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .day-date span { display: block; margin-top: 4px; font-weight: 950; font-size: 1.5rem; line-height: 1; letter-spacing: -.04em; }
+    .day-mood {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.28);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+    .program-slots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px;
+    }
+    .program-slot {
+      min-height: 154px;
+      display: grid;
+      grid-template-columns: 142px 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(23,32,44,.12);
+      border-radius: 12px;
+      background: #fffdf7;
+    }
+    .program-slot.featured {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(250px, .88fr) 1fr;
+      min-height: 220px;
+    }
+    .program-slot img {
+      width: 100%;
+      height: 100%;
+      min-height: 154px;
+      object-fit: cover;
+      background: #ddd;
+    }
+    .program-slot.featured img { min-height: 220px; }
+    .program-copy {
+      padding: 13px 14px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+    .program-copy strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.16;
+      letter-spacing: -.02em;
+    }
+    .program-copy p { margin: 0; color: var(--muted); }
+    .program-copy .chips { margin: 0; }
+    .slot { display: grid; grid-template-columns: 76px 1fr; gap: 10px; padding: 7px 0; }
+    .time { color: var(--azul-dark); font-weight: 950; }
+
+    .table-shell {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,250,240,.84);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 820px; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid rgba(23,32,44,.1); text-align: left; vertical-align: top; }
+    th { color: var(--azul-dark); background: rgba(9,95,158,.08); font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; }
+    td { color: var(--ink); }
+    .status-group { color: var(--verde); font-weight: 900; }
+    .status-own { color: var(--terracotta); font-weight: 900; }
+
+    .transport {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .transport .wide { grid-column: 1 / -1; }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+    .step:first-child { border-top: 0; }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--azul-dark);
+      color: #fff;
+      font-weight: 950;
+    }
+
+    .metro-map {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .location {
+      margin: 8px 0 0;
+      color: var(--azul-dark);
+      font-weight: 850;
+    }
+
+    .info-block {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .info-block:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    .info-block h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 2.6vw, 2rem);
+      letter-spacing: -.03em;
+    }
+
+    .map-lead {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .map-note {
+      padding: 18px;
+      display: grid;
+      align-content: center;
+      gap: 10px;
+    }
+
+    .sos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .sos-number {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: .9;
+      font-weight: 950;
+      letter-spacing: -.06em;
+      color: #9f1d2f;
+      margin: 0 0 8px;
+    }
+    .call-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: #9f1d2f;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 950;
+      margin-top: 12px;
+    }
+
+    .flight-board {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .flight-leg {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      min-height: 260px;
+      border-radius: var(--radius);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(7,58,95,.95), rgba(109,29,60,.78)),
+        url("assets/porto_hero.jpg") center/cover;
+      box-shadow: var(--shadow);
+    }
+    .flight-leg.return {
+      background:
+        linear-gradient(135deg, rgba(109,29,60,.92), rgba(198,107,50,.72)),
+        url("assets/douro.jpg") center/cover;
+    }
+    .flight-label {
+      font-size: .78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .82;
+    }
+    .airport-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+      margin: 22px 0 18px;
+    }
+    .airport-code {
+      display: block;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: .85;
+      font-weight: 950;
+      letter-spacing: -.065em;
+    }
+    .airport-name {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,.78);
+      font-weight: 750;
+    }
+    .flight-arrow {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.36);
+      font-size: 1.4rem;
+      font-weight: 950;
+    }
+    .flight-times {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .flight-times div {
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .flight-times b {
+      display: block;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      opacity: .72;
+    }
+    .flight-times span { display: block; margin-top: 2px; font-weight: 900; }
+    .flight-shot img { height: auto; object-fit: contain; background: #fff; }
+
+    .editable { outline: 2px dashed transparent; border-radius: 6px; }
+    .edit-on .editable { outline-color: rgba(198,107,50,.52); background: rgba(255,246,218,.82); }
+
+    .footer {
+      margin-top: 36px;
+      padding: 24px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-map, .grid.two, .grid.three, .transport, .photo-strip, .flight-board, .map-lead, .sos-grid, .day, .program-slots { grid-template-columns: 1fr; }
+      .wrap { margin-top: -50px; }
+      .section-head { grid-template-columns: 1fr; }
+      .feature { grid-template-columns: 1fr; }
+      .feature img { width: 100%; height: 230px; }
+      .day-date { min-height: 150px; }
+      .program-slot, .program-slot.featured { grid-column: auto; grid-template-columns: 190px 1fr; min-height: 170px; }
+      .program-slot img, .program-slot.featured img { min-height: 170px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap, .hero-inner { width: min(100% - 18px, 1220px); }
+      .toolbar { align-items: stretch; flex-direction: column; }
+      .button-row, .btn { width: 100%; }
+      .day { grid-template-columns: 1fr; }
+      .program-slots { padding: 10px; }
+      .program-slot, .program-slot.featured { grid-template-columns: 1fr; }
+      .program-slot img, .program-slot.featured img { height: 190px; min-height: 190px; }
+      .slot { grid-template-columns: 62px 1fr; }
+      .map-photo { min-height: 300px; }
+    }
+
+    @media print {
+      .nav-shell, .toolbar { display: none; }
+      .hero { min-height: 240px; }
+      .wrap { margin: 0 auto; }
+      .panel { display: block; page-break-before: always; }
+      .panel:first-child { page-break-before: auto; }
+      .card, .feature, .day { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">BFH Holzingenieure | Abschlussreise 2026</div>
+      <h1>Porto, Douro, Meer und letzte Nacht.</h1>
+      <p class="hero-copy">Der kompakte Reiseplan: Programm, Reiseinfos, Abstimmungs-Aktivitäten, Clubs & Bars und ein schneller SOS-Bereich.</p>
+      <div class="hero-facts">
+        <span class="hero-fact">25.06.–02.07.2026</span>
+        <span class="hero-fact">Flüge organisiert</span>
+        <span class="hero-fact">Unterkunft organisiert</span>
+        <span class="hero-fact">Homebase: 41.1694244, -8.5923396</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-shell">
+    <nav class="tabs" aria-label="Reisebereiche">
+      <button class="tab active" data-tab="start">Start</button>
+      <button class="tab" data-tab="programm">Programm</button>
+      <button class="tab" data-tab="reiseinfos">Reiseinfos</button>
+      <button class="tab" data-tab="aktivitaeten">Aktivitäten</button>
+      <button class="tab" data-tab="nachtleben">Clubs & Bars</button>
+      <button class="tab sos-tab" data-tab="sos">SOS</button>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <div>
+        <strong>Porto Reise-App</strong>
+        <div class="muted">Alle Links öffnen in neuen Tabs. Inhalte mit „Bearbeiten“ lokal anpassbar.</div>
+      </div>
+      <div class="button-row">
+        <button class="btn light" id="editBtn" type="button">Bearbeiten</button>
+        <button class="btn secondary" id="printBtn" type="button">PDF / Drucken</button>
+        <button class="btn sos-action" type="button" data-tab-target="sos">SOS</button>
+        <a class="btn" href="https://maps.google.com?q=41.1694244,-8.5923396" target="_blank" rel="noopener">Unterkunft in Maps</a>
+      </div>
+    </div>
+
+    <section id="start" class="panel active">
+      <div class="hero-map">
+        <div class="map-photo">
+          <img src="assets/porto_route_map.png" alt="Karte Porto mit Unterkunft und Zentrum" />
+        </div>
+        <aside class="intro-panel">
+          <div class="big-number">7</div>
+          <h2>Nächte in Porto</h2>
+          <p class="muted">Unterkunft nordöstlich vom Zentrum. In die Baixa / Aliados sind es grob 3 km Luftlinie. Realistisch: 10–20 min mit Uber/Bolt, mit Metro je nach Station und Fussweg etwas länger.</p>
+          <div class="links">
+            <a class="mini-link" href="https://maps.google.com?q=41.1694244,-8.5923396" target="_blank" rel="noopener">Unterkunft</a>
+            <a class="mini-link" href="https://www.google.com/maps/search/?api=1&query=Avenida+dos+Aliados+Porto" target="_blank" rel="noopener">Zentrum</a>
+            <a class="mini-link" href="https://www.metrodoporto.pt/" target="_blank" rel="noopener">Metro do Porto</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="photo-strip">
+        <figure><img src="assets/porto_hero.jpg" alt="Porto Sonnenuntergang"><figcaption>Dom Luís I und Douro bei Sonnenuntergang</figcaption></figure>
+        <figure><img src="assets/douro.jpg" alt="Ribeira Porto"><figcaption>Ribeira, Gaia und Portwein</figcaption></figure>
+        <figure><img src="assets/party_crowd.jpg" alt="Nachtleben"><figcaption>Baixa: Bars, Clubs, später Abend</figcaption></figure>
+      </div>
+
+      <div class="grid three">
+        <div class="card pad">
+          <h3>Fix gesetzt</h3>
+          <p>Flugdaten und Unterkunft sind organisiert. Die Seite nutzt deshalb definitiv den Zeitraum 25. Juni bis 2. Juli 2026.</p>
+        </div>
+        <div class="card pad">
+          <h3>Top-Kombi</h3>
+          <p>Sonntag locker, Montag Douro-Weintour, Dienstag Meer/Sport, Mittwoch letzte Runde und gemeinsames Abschlussessen.</p>
+        </div>
+        <div class="card pad">
+          <h3>Gruppenlogik</h3>
+          <p>Bei 16 Personen vorher Slots klären: Restaurant, Boot, Surf, Padel/Karting und Club-Eintritt werden sonst schnell mühsam.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programm" class="panel">
+      <div class="section-head">
+        <div><div class="eyebrow">Ablauf</div><h2>Programm</h2><p>Ein Vorschlag mit genug Luft für 16 Leute. Die Klasse kann direkt auf der Seite nachjustieren.</p></div>
+      </div>
+      <div class="timeline" id="programList"></div>
+    </section>
+
+    <section id="reiseinfos" class="panel">
+      <div class="section-head">
+        <div><div class="eyebrow">Alles Wichtige</div><h2>Reiseinfos</h2><p>Unterkunft, Flug, Mobilität, Packliste und Klassenliste sind hier zusammengefasst, damit die App weniger Reiter hat.</p></div>
+      </div>
+
+      <div class="info-block">
+        <h3>Unterkunft</h3>
+        <div class="grid two">
+          <div class="card map-card">
+            <iframe class="embed-map" title="Google Maps Karte der Unterkunft" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=41.1694244,-8.5923396&z=14&output=embed"></iframe>
+            <div class="card-body"><h3>Lage</h3><p>Unterkunft nordöstlich vom Zentrum. Für Baixa, Aliados und Ribeira sind Uber/Bolt nachts am einfachsten; tagsüber Metro/Bus je nach Route.</p><div class="links"><a class="mini-link" href="https://maps.google.com?q=41.1694244,-8.5923396" target="_blank" rel="noopener">In Google Maps öffnen</a><a class="mini-link" href="https://www.airbnb.ch/rooms/41180670?adults=16&check_in=2026-06-25&check_out=2026-07-02" target="_blank" rel="noopener">Airbnb</a></div></div>
+          </div>
+          <div class="card pad">
+            <h3>Check-in Infos</h3>
+            <div class="feature"><img src="assets/douro.jpg" alt="Porto"><div><h3>Adresse & Code</h3><p class="editable" contenteditable="false">Exakte Adresse, Türcode, Check-in-Zeit, Schlüsselübergabe und Hausregeln hier eintragen.</p></div></div>
+            <div class="feature"><img src="assets/cocktails.jpg" alt="Gruppe"><div><h3>Gruppenregeln</h3><p class="editable" contenteditable="false">Ruhezeiten, Abfall, wer hat Schlüssel, wer kontrolliert am Check-out.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Flug</h3>
+        <div class="flight-board">
+          <article class="flight-leg">
+            <div class="flight-label">Hinflug | TAP TP921 | Donnerstag, 25. Juni</div>
+            <div class="airport-row">
+              <div><span class="airport-code">ZRH</span><span class="airport-name">Zürich</span></div>
+              <div class="flight-arrow">→</div>
+              <div><span class="airport-code">OPO</span><span class="airport-name">Porto</span></div>
+            </div>
+            <div class="flight-times">
+              <div><b>Treffpunkt</b><span>13:45</span></div>
+              <div><b>Abflug</b><span>15:50</span></div>
+              <div><b>Ankunft</b><span>17:20</span></div>
+            </div>
+          </article>
+          <article class="flight-leg return">
+            <div class="flight-label">Rückflug | TAP TP920 | Donnerstag, 2. Juli</div>
+            <div class="airport-row">
+              <div><span class="airport-code">OPO</span><span class="airport-name">Porto</span></div>
+              <div class="flight-arrow">→</div>
+              <div><span class="airport-code">ZRH</span><span class="airport-name">Zürich</span></div>
+            </div>
+            <div class="flight-times">
+              <div><b>Transfer</b><span>08:30</span></div>
+              <div><b>Abflug</b><span>11:30</span></div>
+              <div><b>Ankunft</b><span>15:05</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="grid two">
+          <div class="card pad"><h3>Handgepäck TAP</h3><p>Kabinenkoffer 55 × 40 × 25 cm, max. 10 kg. Persönlicher Gegenstand 40 × 30 × 15 cm, max. 2 kg. Flüssigkeiten 100 ml im 1-L-Beutel.</p></div>
+          <div class="card pad"><h3>Reisedatum</h3><p>Fixer Zeitraum: 25. Juni bis 2. Juli 2026. Am Rückflugmorgen früh genug Check-out, Gepäck und Transfers organisieren.</p></div>
+        </div>
+        <div class="card flight-shot" style="margin-top:14px"><img src="Flüge_porto.png" alt="Flugzeiten Screenshot"></div>
+      </div>
+
+      <div class="info-block">
+        <h3>Mobilität</h3>
+        <div class="transport">
+          <article class="card pad wide">
+            <h3>Metro-Netz auf einen Blick</h3>
+            <img class="metro-map" src="assets/porto_metro_quick_map.png" alt="Schematische Metrokarte Porto">
+            <p style="margin-top:10px">Linie E ab Flughafen Richtung Trindade, Linie D für Aliados/São Bento/Gaia, Linie A Richtung Matosinhos/Strand.</p>
+            <div class="links"><a class="mini-link" href="https://www.metrodoporto.pt/" target="_blank" rel="noopener">Metro do Porto</a><a class="mini-link" href="https://andante.pt/" target="_blank" rel="noopener">Andante</a><a class="mini-link" href="https://www.cp.pt/" target="_blank" rel="noopener">CP Tickets</a></div>
+          </article>
+          <article class="card pad">
+            <h3>Vom Flughafen</h3>
+            <p>Mit Metro E bis Trindade und je nach Lage weiter mit Metro/zu Fuss. Für 16 Personen mit Gepäck sind 3–4 Uber/Bolt oft entspannter.</p>
+          </article>
+          <article class="card pad">
+            <h3>Nachts</h3>
+            <p>Für Clubnächte Treffpunkt setzen und Autos splitten. Baixa-Gassen sind eng, darum Abholpunkt vorher festlegen.</p>
+            <div class="links"><a class="mini-link" href="https://www.uber.com/pt/en/" target="_blank" rel="noopener">Uber</a><a class="mini-link" href="https://bolt.eu/en-pt/cities/porto/" target="_blank" rel="noopener">Bolt</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Packliste</h3>
+        <div class="grid three">
+          <div class="card pad"><h3>Dokumente</h3><p>ID/Pass, Boardingpass, Krankenkassenkarte, Bankkarte, etwas Bargeld, Airbnb-Adresse offline, Notfallkontakt.</p></div>
+          <div class="card pad"><h3>Kleider</h3><p>7x Unterwäsche/Socken, 5–6 Shirts, 2 kurze Hosen, 1 lange Hose, Hemd/Polo, Hoodie/leichte Jacke.</p></div>
+          <div class="card pad"><h3>Meer & Sport</h3><p>Badehose, Mikrofaser-Strandtuch, Sonnencreme SPF 30/50, Sonnenbrille, Sneakers, Flipflops, Sportshirt.</p></div>
+          <div class="card pad"><h3>Technik</h3><p>Handy, Ladegerät, Powerbank, Kopfhörer. Portugal nutzt EU-Stecker.</p></div>
+          <div class="card pad"><h3>Hygiene</h3><p>Zahnbürste, Deo, Reiseapotheke, Pflaster, persönliche Medikamente, Ohropax.</p></div>
+          <div class="card pad"><h3>Gruppe</h3><p class="editable" contenteditable="false">Gemeinsame Liste: wer nimmt Box, Speaker, Karten, Erste-Hilfe, Ball, Sonnencreme-Reserve?</p></div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Klassenliste</h3>
+        <div class="table-shell">
+          <table>
+            <thead id="peopleHeader"></thead>
+            <tbody id="peopleTable"></tbody>
+          </table>
+        </div>
+        <div class="grid two" style="margin-top:14px">
+          <div class="card pad"><h3>Legende</h3><p><span class="status-group">Gruppenbuchung</span> = über die gemeinsame Buchung. <span class="status-own">Eigene Buchung</span> = Buchung durch jeweilige Person.</p></div>
+          <div class="card pad"><h3>Hinweis</h3><p class="editable" contenteditable="false">Vor dem Verschicken an Externe prüfen: Geburtstage sind persönliche Daten. Für den Klassenchat ist es ok, öffentlich würde ich die Spalte entfernen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aktivitaeten" class="panel">
+      <div class="section-head"><div><div class="eyebrow">Abstimmung</div><h2>Aktivitäten</h2><p>Die WhatsApp-Abstimmung ist übernommen. Douro Valley bleibt als Montag-Idee oben, weil dort am meisten Interesse da ist.</p></div></div>
+      <div class="map-lead">
+        <div class="card map-card">
+          <iframe class="embed-map" title="Google Maps Aktivitäten in Porto" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Porto%20Matosinhos%20surf%20padel%20karting%20paintball%20Six%20Bridges%20Cruise%20Douro%20wine%20tour%20Braga%20FC%20Porto%20Stadium&z=11&output=embed"></iframe>
+        </div>
+        <div class="card map-note">
+          <h3>Kartenlogik</h3>
+          <p>Die Karte zeigt die wichtigsten Suchpunkte für die Aktivitäten. Die einzelnen Karten unten haben direkte Google-Maps-Links zum jeweiligen Spot oder Suchbereich.</p>
+          <div class="chips"><span class="chip wine">Top: Douro 9 Stimmen</span><span class="chip green">Go-Kart 8</span><span class="chip green">Portwein 8</span><span class="chip">Padel / Braga 6</span></div>
+        </div>
+      </div>
+      <div id="activityList"></div>
+    </section>
+
+    <section id="nachtleben" class="panel">
+      <div class="section-head"><div><div class="eyebrow">After dark</div><h2>Clubs & Bars</h2><p>Echte Google-Maps-Karte plus kurze Einschätzung zu Musikstil, Gruppentauglichkeit und Lage. Vor Clubnächten Line-up/Instagram prüfen.</p></div></div>
+      <div class="map-lead">
+        <div class="card map-card">
+          <iframe class="embed-map" title="Google Maps Clubs und Bars in Porto" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=BASE%20Porto%20Maus%20Habitos%20Plano%20B%20Gare%20Porto%20Ferro%20Bar%20Perola%20Negra%20Galerias%20de%20Paris%20Bonaparte%20Downtown%20Porto&z=15&output=embed"></iframe>
+        </div>
+        <div class="card map-note">
+          <h3>Beste Basis</h3>
+          <p>Für eine grosse Gruppe ist Baixa/Galerias am einfachsten: viele Bars nah beieinander, später kann man in Plano B, Gare oder Pérola Negra wechseln.</p>
+          <div class="links"><a class="mini-link" href="https://www.google.com/maps/search/?api=1&query=best+clubs+bars+Baixa+Porto" target="_blank" rel="noopener">Alle Spots in Maps</a></div>
+        </div>
+      </div>
+      <div class="grid three" id="nightCards"></div>
+    </section>
+
+    <section id="sos" class="panel">
+      <div class="section-head"><div><div class="eyebrow">Notfall</div><h2>SOS</h2><p>Wichtige Nummern und Orte für Portugal. Im echten Notfall immer zuerst 112 wählen.</p></div></div>
+      <div class="sos-grid">
+        <article class="card pad">
+          <div class="sos-number">112</div>
+          <h3>EU-Notruf</h3>
+          <p>Polizei, Ambulanz und Feuerwehr. Funktioniert in Portugal und in der EU.</p>
+          <a class="call-link" href="tel:112">112 anrufen</a>
+        </article>
+        <article class="card pad">
+          <h3>Krankenhaus</h3>
+          <p>Hospital São João<br><strong>+351 225 512 100</strong><br>Alameda Prof. Hernâni Monteiro, Porto</p>
+          <div class="links"><a class="mini-link" href="tel:+351225512100">Anrufen</a><a class="mini-link" href="https://www.google.com/maps/search/?api=1&query=Hospital+Sao+Joao+Porto" target="_blank" rel="noopener">Maps</a></div>
+        </article>
+        <article class="card pad">
+          <h3>Flughafen</h3>
+          <p>Porto Airport / OPO<br><strong>+351 229 432 400</strong><br>Für verlorenes Gepäck, Rückflug und Transfer.</p>
+          <div class="links"><a class="mini-link" href="tel:+351229432400">Anrufen</a><a class="mini-link" href="https://www.google.com/maps/search/?api=1&query=Porto+Airport+OPO" target="_blank" rel="noopener">Maps</a></div>
+        </article>
+        <article class="card pad">
+          <h3>Unterkunft</h3>
+          <p>Homebase-Koordinaten: 41.1694244, -8.5923396. Adresse/Code im Reiseinfos-Reiter ergänzen.</p>
+          <div class="links"><a class="mini-link" href="https://maps.google.com?q=41.1694244,-8.5923396" target="_blank" rel="noopener">Unterkunft in Maps</a></div>
+        </article>
+        <article class="card pad">
+          <h3>Treffpunkt nach Ausgang</h3>
+          <p class="editable" contenteditable="false">Fallback-Treffpunkt eintragen, z.B. Aliados oder São Bento. Nach Clubnächten nicht allein heimlaufen.</p>
+        </article>
+        <article class="card pad">
+          <h3>Vor Ort merken</h3>
+          <p class="editable" contenteditable="false">Name der Unterkunft, Türcode, Kontaktperson, Allergien/Medikamente und Notfallkontakt der Gruppe hier ergänzen.</p>
+        </article>
+      </div>
+    </section>
+    <div class="footer">BFH Holzingenieure | Porto 2026 | lokale Reisewebseite mit Fotos, Karte und Links</div>
+  </main>
+
+  <script>
+    const maps = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    const img = {
+      porto: "assets/porto_hero.jpg",
+      ribeira: "assets/douro.jpg",
+      surf: "assets/doc_surf.jpg",
+      action: "assets/doc_action.jpg",
+      programDouro: "assets/program_douro.png",
+      programSurf: "assets/program_surf.png",
+      programKarting: "assets/program_karting.png",
+      night: "assets/party_crowd.jpg",
+      bar: "assets/bar_interior.jpg",
+      cocktails: "assets/cocktails.jpg",
+      boat: "assets/doc_boat.jpg"
+    };
+
+    const people = [
+      [1, "Abegglen", "Michael", "25.06.", "02.07.", "Gruppenbuchung"],
+      [2, "Affolter", "Fabio", "28.06.", "02.07.", "Eigene Buchung"],
+      [3, "Antonov", "Orlin Severin", "25.06.", "02.07.", "Gruppenbuchung"],
+      [4, "Birrer", "Severin", "25.06.", "02.07.", "Gruppenbuchung"],
+      [5, "Bucher", "Simon", "25.06.", "anderes Datum", "Eigene Buchung"],
+      [6, "Buser", "Philipp Laurent", "25.06.", "01.07.", "Eigene Buchung"],
+      [7, "Crotta", "Robin Matteo", "25.06.", "02.07.", "Gruppenbuchung"],
+      [8, "Eggenberger", "Sébastien Georges Rue", "25.06.", "02.07.", "Gruppenbuchung"],
+      [9, "Josef", "Fabian Tim", "25.06.", "02.07.", "Gruppenbuchung"],
+      [10, "Nägeli", "David Ursin", "25.06.", "02.07.", "Gruppenbuchung"],
+      [11, "Nietlispach", "Andrin Fabian", "25.06.", "02.07.", "Gruppenbuchung"],
+      [12, "Ninck", "Emanuel", "25.06.", "02.07.", "Gruppenbuchung"],
+      [13, "Pichler", "Sandro Mauro", "25.06.", "02.07.", "Gruppenbuchung"],
+      [14, "Rohner", "Silvester", "25.06.", "02.07.", "Gruppenbuchung"],
+      [15, "Semenov", "Georg", "25.06.", "02.07.", "Gruppenbuchung"],
+      [16, "Walther", "Michelle", "27.06.", "02.07.", "Eigene Buchung"]
+    ];
+
+    const program = [
+      {
+        day: "Donnerstag",
+        date: "25. Juni",
+        mood: "Ankommen",
+        slots: [
+          {time: "13:45", title: "Treffpunkt Flughafen Zürich", text: "ID/Pass, Boardingpass und Handgepäck checken. Danach gemeinsam entspannt Richtung Gate.", image: img.porto},
+          {time: "15:50", title: "Abflug ZRH → OPO", text: "TAP TP921, direkt nach Porto. Im Flug kurz klären, wer beim Transfer zusammen fährt.", image: "Flüge_porto.png"},
+          {time: "17:20", title: "Ankunft Porto", text: "Gepäck sammeln, 3–4 Uber/Bolt oder Metro-Gruppe bilden und zur Unterkunft.", image: img.porto},
+          {time: "21:00", title: "Ribeira / Gaia", text: "Leichtes Essen, erster Douro-Blick, Brücke und Porto-Feeling ohne Stress.", image: img.ribeira, featured: true}
+        ]
+      },
+      {
+        day: "Freitag",
+        date: "26. Juni",
+        mood: "Porto kennenlernen",
+        slots: [
+          {time: "10:00", title: "Porto Altstadt", text: "São Bento, Clérigos, Bolhão und Aliados. Viel sehen, aber nicht als Militärmarsch.", image: img.porto, featured: true},
+          {time: "14:00", title: "Ribeira & Dom Luís I", text: "Zu Fuss nach Gaia, Jardim do Morro und Fotos über dem Douro.", image: img.ribeira},
+          {time: "18:00", title: "Portweinkeller / Gaia", text: "Tasting oder kurzer Kellerbesuch. Gute Vorstufe zur Douro-Tour.", image: img.programDouro},
+          {time: "23:30", title: "Bars & Clubs", text: "BASE, Maus Hábitos, Plano B oder Gare. Erst sammeln, dann weiterziehen.", image: img.night}
+        ]
+      },
+      {
+        day: "Samstag",
+        date: "27. Juni",
+        mood: "Meer & Nacht",
+        slots: [
+          {time: "10:30", title: "Matosinhos", text: "Surfkurs oder Strandtag direkt am Atlantik. Ideal als aktive erste grosse Tagesoption.", image: img.programSurf, featured: true},
+          {time: "15:30", title: "Seafood / Beach", text: "Fisch, Atlantik, lockerer Nachmittag und Sonnencreme nicht vergessen.", image: img.programSurf},
+          {time: "21:00", title: "Dinner Baixa", text: "Reservation für 16 Personen. Danach nicht zu weit auseinanderlaufen.", image: img.cocktails},
+          {time: "00:30", title: "Clubnacht", text: "Gare, Plano B oder Pérola Negra je nach Line-up und Gruppenlaune.", image: img.night}
+        ]
+      },
+      {
+        day: "Sonntag",
+        date: "28. Juni",
+        mood: "locker bleiben",
+        slots: [
+          {time: "10:30", title: "Chilliger Start", text: "Ausschlafen, Frühstück, kurzer Einkauf und kein Stress nach der Clubnacht.", image: img.cocktails},
+          {time: "12:30", title: "Leichter Sport oder Beach", text: "Matosinhos, Padel oder Tennis in kleinen Gruppen. Wer will, bleibt einfach am Meer.", image: img.programSurf},
+          {time: "17:30", title: "Zurück zur Unterkunft", text: "Duschen, Pause, Wäsche/Organisation, gemeinsame Abstimmung für Montag.", image: img.porto},
+          {time: "20:30", title: "Easy Dinner", text: "Kein harter Ausgang: frühe Nacht, weil Montag Douro-Tag ist.", image: img.bar, featured: true}
+        ]
+      },
+      {
+        day: "Montag",
+        date: "29. Juni",
+        mood: "Douro-Tag",
+        slots: [
+          {time: "08:30", title: "Douro-Tal: Treffpunkt", text: "Ganztagestour mit Wein, Mittagessen und Bootsfahrt. Pünktlich sein, das ist der grosse Ausflug.", image: img.programDouro, featured: true},
+          {time: "09:00", title: "Abfahrt Douro", text: "Terrassenweinberge, Weingut, Verkostungen, Lunch und Bootsfahrt.", image: img.programDouro},
+          {time: "19:30", title: "Rückkehr Porto", text: "Leichtes Abendessen, Wasser trinken, kurze Pause.", image: img.ribeira},
+          {time: "22:30", title: "Optional ruhige Bar", text: "Nur wenn alle noch mögen: BASE, Bonaparte oder kurzer Spaziergang am Douro.", image: img.cocktails}
+        ]
+      },
+      {
+        day: "Dienstag",
+        date: "30. Juni",
+        mood: "Action-Optionen",
+        slots: [
+          {time: "10:30", title: "Meer- oder Sporttag", text: "Matosinhos als Basis: Strand, Surfkurs, SUP oder Beachvolleyball.", image: img.programSurf, featured: true},
+          {time: "14:30", title: "Option Padel / Karting", text: "Wer genug vom Meer hat: Padel-Turnier oder Karting als zweite Gruppe.", image: img.programKarting, featured: true},
+          {time: "18:30", title: "Sunset Foz / Matosinhos", text: "Atlantik, Promenade, Fotos, entspannter Abend.", image: img.programSurf},
+          {time: "21:00", title: "Dinner am Meer", text: "Fisch/Seafood in Matosinhos oder zurück in Baixa.", image: img.ribeira}
+        ]
+      },
+      {
+        day: "Mittwoch",
+        date: "1. Juli",
+        mood: "letzte Runde",
+        slots: [
+          {time: "10:30", title: "Freier Vormittag", text: "Ausschlafen, Kaffee, Shopping oder kleine Gruppenpläne.", image: img.cocktails},
+          {time: "14:30", title: "Letzte Porto-Runde", text: "Bolhão, São Bento, Clérigos, Shopping, Kaffee und Souvenirs.", image: img.porto, featured: true},
+          {time: "18:00", title: "Pause & Packen light", text: "Schon grob packen, damit der Rückflugmorgen entspannt bleibt.", image: img.porto},
+          {time: "20:30", title: "Letztes gemeinsames Essen", text: "Reserviertes Abschlussessen, danach optional BASE / Galerias / kurzer Clubabschluss.", image: img.night}
+        ]
+      },
+      {
+        day: "Donnerstag",
+        date: "2. Juli",
+        mood: "heimreisen",
+        slots: [
+          {time: "07:30", title: "Packen & Check-out", text: "Zimmer, Ladegeräte, ID prüfen. Unterkunft ordentlich abgeben.", image: img.porto},
+          {time: "08:30", title: "Transfer OPO", text: "Genug Autos/Zeit einplanen. Lieber zu früh als schwitzend am Gate.", image: "Flüge_porto.png"},
+          {time: "11:30", title: "Abflug OPO → ZRH", text: "TAP TP920 zurück nach Zürich.", image: "Flüge_porto.png"},
+          {time: "15:05", title: "Ankunft Zürich", text: "Ende der Reise. Fotos sichern, offene Rechnungen in der Gruppe ausgleichen.", image: img.porto, featured: true}
+        ]
+      }
+    ];
+
+    const activities = [
+      {image: img.ribeira, title: "Douro Valley Weintour", place: "Douro-Tal / Pinhão", meta: "9 Stimmen | ca. 80–90 CHF p.P. | Montag", text: "Klarer Favorit und als Montag-Ausflug geplant: Ganztagestour mit Weindegustation, Lunch und Bootsfahrt. Für die ganze Klasse gedacht; wer nicht mitwill, soll sich früh melden.", links: [["Tour suchen", "https://www.getyourguide.com/s/?q=Porto%20Douro%20Valley%20wine%20tour%20lunch%20boat"], ["Douro in Maps", maps("Pinhao Douro Valley Portugal")]]},
+      {image: img.action, title: "Go-Kart fahren", place: "Porto / Matosinhos / Indoor je nach Anbieter", meta: "8 Stimmen | ca. 27–40 CHF p.P.", text: "Sehr gute Gruppenaktivität mit Wettbewerb. Am besten ein Paket mit Qualifying und Finale suchen und für 16 Personen direkt anfragen.", links: [["Outdoor Karting", maps("outdoor karting Porto")], ["Indoor Karting", maps("indoor karting Porto")]]},
+      {image: img.ribeira, title: "Portwein-Keller in Gaia", place: "Vila Nova de Gaia", meta: "8 Stimmen | ca. 21–32 CHF p.P.", text: "Kürzer und einfacher als Douro Valley: direkt gegenüber von Porto, gut mit Ribeira, Jardim do Morro oder Dinner in Gaia kombinierbar.", links: [["Cálem", "https://calem.pt/"], ["Cockburn's", "https://www.cockburns.com/"], ["Gaia Maps", maps("Port wine cellar tour Vila Nova de Gaia")]]},
+      {image: img.action, title: "Padel / Tennis spielen", place: "Porto, je nach freien Courts", meta: "6 Stimmen | ca. 7–16 CHF p.P.", text: "Locker und gut teilbar: 4er-Teams, kleine Gruppen oder Mini-Turnier. Courts vorher über Maps oder Playtomic prüfen.", links: [["Playtomic", "https://playtomic.io/"], ["Padel Maps", maps("padel courts Porto")], ["Tennis Maps", maps("tennis courts Porto")]]},
+      {image: img.ribeira, title: "Tagesausflug Braga mit Zug", place: "Porto São Bento / Campanhã → Braga", meta: "6 Stimmen | ca. 25–40 CHF total", text: "Gute Kultur-Option mit Kathedrale, Bom Jesus do Monte und Altstadt. Zug grob günstig; Essen und Drinks vor Ort machen den Hauptteil der Kosten aus.", links: [["CP Portugal", "https://www.cp.pt/"], ["Braga Maps", maps("Braga Portugal Bom Jesus do Monte")]]},
+      {image: img.action, title: "Paintball in Gaia / Porto", place: "Gaia / Porto Umgebung", meta: "4 Stimmen | ca. 20–35 CHF p.P.", text: "Actionmässig, aber wetter- und transportabhängig. Lohnt sich nur, wenn genug Leute wirklich Bock haben und ein Gruppenpaket passt.", links: [["Paintball Maps", maps("paintball Porto Vila Nova de Gaia")]]},
+      {image: img.surf, title: "Surfkurs in Matosinhos", place: "Praia de Matosinhos", meta: "3 Stimmen | ca. 17–32 CHF p.P.", text: "Direkt am Meer und für Anfänger gut machbar. Kann auch als Strandtag laufen, falls nicht alle surfen wollen.", links: [["Fish Surf School", "https://fishsurfschool.com/"], ["Onda Pura", "https://ondapura.com/"], ["Matosinhos Maps", maps("surf school Matosinhos Porto")]]},
+      {image: img.surf, title: "Bike / E-Bike Küstentour", place: "Porto → Foz → Matosinhos", meta: "3 Stimmen | ca. 7–15 CHF Bike, E-Bike mehr", text: "Gemütliche Küstenroute am Atlantik. Gut für kleinere Gruppe oder als lockerer halber Tag mit Stopps in Foz und Matosinhos.", links: [["Bike Rental Maps", maps("bike rental Porto Foz Matosinhos")], ["Route Maps", maps("Porto Foz Matosinhos bike route")]]},
+      {image: img.boat, title: "6-Brücken-Bootstour", place: "Ribeira / Gaia Anleger", meta: "2 Stimmen | ca. 18–20 CHF p.P. | 50 min", text: "Kurzer Porto-Klassiker auf dem Douro. Nicht der Top-Favorit, aber gut als spontaner Programmpunkt vor Dinner oder Sunset.", links: [["Six Bridges Cruise", "https://www.getyourguide.com/s/?q=Porto%206%20bridges%20cruise"], ["Ribeira Maps", maps("Cais da Ribeira Porto six bridges cruise")]]},
+      {image: img.porto, title: "FC Porto Stadion & Museum", place: "Estádio do Dragão", meta: "0 Stimmen | ca. 18–20 CHF p.P.", text: "Nur für Fussballfans einplanen. Dank Metro gut erreichbar, aber gemäss Abstimmung aktuell keine Priorität.", links: [["FC Porto", "https://www.fcporto.pt/en/club/museum"], ["Stadion Maps", maps("Estadio do Dragao Porto")]]}
+    ];
+
+    const nightlife = [
+      {image: img.cocktails, title: "BASE Porto", place: "Passeio dos Clérigos", meta: "Outdoor-Bar | Start | entspannt", text: "Guter Treffpunkt für den ersten Drink. Musik eher Bar-/DJ-Stimmung als harter Club; gut, wenn noch nicht alle direkt tanzen wollen.", links: [["Website", "https://www.baseporto.com/"], ["Maps", maps("BASE Porto Passeio dos Clerigos")]]},
+      {image: img.bar, title: "Maus Hábitos", place: "Rua de Passos Manuel 178", meta: "Kulturhaus | Bar | Clubnächte", text: "Alternative Mischung aus Bar, Konzerten, Ausstellungen und Clubbing. Musik je nach Programm: indie, live, electronic, experimenteller als Mainstream.", links: [["Website", "https://www.maushabitos.com/"], ["Maps", maps("Maus Habitos Rua Passos Manuel 178 Porto")]]},
+      {image: img.night, title: "Plano B", place: "Rua Cândido dos Reis", meta: "Club | Galerias | mixed", text: "Klassischer Club im Ausgehviertel. Gut für eine grosse Gruppe, wenn ihr gemischte Musik wollt: oft Pop, indie, house oder electronic je nach Raum/Event.", links: [["Instagram", "https://www.instagram.com/planobporto/"], ["Maps", maps("Plano B Porto Rua Candido dos Reis")]]},
+      {image: img.night, title: "Gare Porto", place: "Rua da Madeira 182", meta: "Techno / electronic | spät", text: "Für die elektronische Clubnacht. Nah bei São Bento, eher intensiv und später. Tickets und Line-up vorher prüfen.", links: [["Instagram", "https://www.instagram.com/gareporto/"], ["Maps", maps("Gare Porto Rua da Madeira 182")]]},
+      {image: img.bar, title: "Ferro Bar", place: "Rua da Madeira", meta: "DJ-Bar | zentral | warm-up", text: "Praktischer Zwischenstopp zwischen Bar und Club. Je nach Abend Disco, funk, house oder elektronische DJ-Sets.", links: [["Instagram", "https://www.instagram.com/ferro.bar/"], ["Maps", maps("Ferro Bar Porto Rua da Madeira")]]},
+      {image: img.night, title: "Pérola Negra", place: "Rua de Gonçalo Cristóvão", meta: "Event-Club | speziell", text: "Eher Event-Location als Standardclub. Kann sehr stark sein, wenn ein passender Abend läuft: disco, house, queer/alternative oder Themenpartys.", links: [["Instagram", "https://www.instagram.com/perolanegraporto/"], ["Maps", maps("Perola Negra Porto")]]},
+      {image: img.cocktails, title: "Galerias de Paris", place: "Rua Galeria de Paris", meta: "Barhopping | unkompliziert", text: "Der einfachste Bereich für eine grosse Gruppe: viele Bars nahe beieinander, meist Mainstream, Latin, Pop oder DJ-Bar-Sound.", links: [["Maps", maps("Rua Galeria de Paris Porto")]]},
+      {image: img.bar, title: "Bonaparte Downtown", place: "Baixa / Downtown", meta: "Pub | Bier | ruhiger Start", text: "Solider Pub für Bier, Whisky und Gespräche. Gut als Gegenpol zu lauten Clubs oder als Start vor Galerias.", links: [["Website", "https://www.bonaparte.pt/"], ["Maps", maps("Bonaparte Downtown Porto")]]}
+    ];
+
+    function linkButtons(links) {
+      return `<div class="links">${links.map(l => `<a class="mini-link" href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join("")}</div>`;
+    }
+
+    function renderFeatureList(id, data) {
+      document.getElementById(id).innerHTML = data.map(item => `
+        <article class="feature">
+          <img src="${item.image}" alt="${item.title}">
+          <div>
+            <h3>${item.title}</h3>
+            ${item.place ? `<p class="location">${item.place}</p>` : ""}
+            <div class="chips"><span class="chip wine">${item.meta}</span></div>
+            <p>${item.text}</p>
+            ${linkButtons(item.links)}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderCards(id, data) {
+      document.getElementById(id).innerHTML = data.map(item => `
+        <article class="card">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="card-body">
+            <h3>${item.title}</h3>
+            <p class="location">${item.place}</p>
+            <div class="chips"><span class="chip wine">${item.meta}</span></div>
+            <p>${item.text}</p>
+            ${linkButtons(item.links)}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    document.getElementById("programList").innerHTML = program.map(day => `
+      <article class="day">
+        <div class="day-date"><div><b>${day.day}</b><span>${day.date}</span></div><div class="day-mood">${day.mood}</div></div>
+        <div class="program-slots">${day.slots.map(slot => `
+          <article class="program-slot ${slot.featured ? "featured" : ""}">
+            <img src="${slot.image}" alt="${slot.title}">
+            <div class="program-copy editable" contenteditable="false">
+              <div class="chips"><span class="chip">${slot.time}</span></div>
+              <strong>${slot.title}</strong>
+              <p>${slot.text}</p>
+            </div>
+          </article>
+        `).join("")}</div>
+      </article>
+    `).join("");
+
+    const hasBirthdays = people[0]?.length === 7;
+    document.getElementById("peopleHeader").innerHTML = hasBirthdays
+      ? "<tr><th>Nr.</th><th>Name</th><th>Vorname</th><th>Geburtstag</th><th>Anreise</th><th>Abreise</th><th>Buchung</th></tr>"
+      : "<tr><th>Nr.</th><th>Name</th><th>Vorname</th><th>Anreise</th><th>Abreise</th><th>Buchung</th></tr>";
+    document.getElementById("peopleTable").innerHTML = people.map(p => {
+      const booking = p[p.length - 1];
+      const row = hasBirthdays
+        ? [p[0], p[1], p[2], p[3], p[4], p[5]]
+        : [p[0], p[1], p[2], p[3], p[4]];
+      return `<tr>${row.map(cell => `<td>${cell}</td>`).join("")}<td class="${booking.startsWith("Gruppen") ? "status-group" : "status-own"}">${booking}</td></tr>`;
+    }).join("");
+
+    renderFeatureList("activityList", activities);
+    renderCards("nightCards", nightlife);
+
+    const tabs = [...document.querySelectorAll(".tab")];
+    const panels = [...document.querySelectorAll(".panel")];
+    function activateTab(tabId) {
+      const tab = tabs.find(t => t.dataset.tab === tabId);
+      const panel = document.getElementById(tabId);
+      if (!tab || !panel) return;
+      tabs.forEach(t => t.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+      tab.classList.add("active");
+      panel.classList.add("active");
+      window.scrollTo({ top: document.querySelector(".nav-shell").offsetTop, behavior: "smooth" });
+    }
+    tabs.forEach(tab => tab.addEventListener("click", () => activateTab(tab.dataset.tab)));
+    document.querySelectorAll("[data-tab-target]").forEach(button => {
+      button.addEventListener("click", () => activateTab(button.dataset.tabTarget));
+    });
+
+    const editBtn = document.getElementById("editBtn");
+    const printBtn = document.getElementById("printBtn");
+    const key = "bfh-porto-2026-edits-v5";
+    let editing = false;
+    const editables = () => [...document.querySelectorAll(".editable")];
+    function saveEdits() { localStorage.setItem(key, JSON.stringify(editables().map(e => e.innerHTML))); }
+    function loadEdits() {
+      try {
+        const values = JSON.parse(localStorage.getItem(key) || "[]");
+        editables().forEach((el, i) => { if (values[i]) el.innerHTML = values[i]; });
+      } catch (err) {}
+    }
+    loadEdits();
+    editables().forEach(el => el.addEventListener("input", saveEdits));
+    editBtn.addEventListener("click", () => {
+      editing = !editing;
+      document.body.classList.toggle("edit-on", editing);
+      editables().forEach(el => el.contentEditable = editing ? "true" : "false");
+      editBtn.textContent = editing ? "Speichern fertig" : "Bearbeiten";
+      if (!editing) saveEdits();
+    });
+    printBtn.addEventListener("click", () => window.print());
+  </script>
+</body>
+</html>
