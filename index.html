@@ -1069,6 +1069,7 @@
       programDouro: "assets/program_douro.png",
       programSurf: "assets/program_surf.png",
       programKarting: "assets/program_karting.png",
+      football: "assets/program_portugal_colombia.png",
       night: "assets/party_crowd.jpg",
       bar: "assets/bar_interior.jpg",
       cocktails: "assets/cocktails.jpg",
@@ -1150,7 +1151,33 @@
           {time: "10:30", title: "Chilliger Start", text: "Ausschlafen, Frühstück, kurzer Einkauf und kein Stress nach der Clubnacht.", image: img.cocktails},
           {time: "12:30", title: "Leichter Sport oder Beach", text: "Matosinhos, Padel oder Tennis in kleinen Gruppen. Wer will, bleibt einfach am Meer.", image: img.programSurf},
           {time: "17:30", title: "Zurück zur Unterkunft", text: "Duschen, Pause, Wäsche/Organisation, gemeinsame Abstimmung für Montag.", image: img.porto},
-          {time: "20:30", title: "Easy Dinner", text: "Kein harter Ausgang: frühe Nacht, weil Montag Douro-Tag ist.", image: img.bar, featured: true}
+          {time: "20:30", title: "Easy Dinner", text: "Kein harter Ausgang, aber wer das Portugal-Spiel schauen will, bleibt in Baixa flexibel.", image: img.bar},
+          {time: "00:30", title: "Portugal - Kolumbien: Public Viewing", text: "Anspielzeit in Porto: Sonntag, 28. Juni, 00:30. Trotz später Stunde als Sonntagabend/Nachtpunkt eingeplant.", image: img.football, featured: true, status: "Porto-Ortszeit", details: {
+            summary: "Public-Viewing-Ideen in Porto",
+            mapQuery: "Avenida dos Aliados Porto Galerias de Paris Bonaparte Downtown Ryan's Bar Estádio do Dragão",
+            description: "Das Spiel läuft am Samstag, 27. Juni um 19:30 in Miami. In Porto ist das wegen Zeitverschiebung Sonntag, 28. Juni um 00:30. Offizielle Fan-Zonen kurzfristig prüfen; für Stimmung sind Baixa/Aliados und Bars am wahrscheinlichsten.",
+            rows: [
+              ["Spiel", "Kolumbien - Portugal, Gruppe K"],
+              ["Anspielzeit Porto", "Sonntag, 28. Juni, 00:30"],
+              ["Stimmung", "Aliados / Baixa zuerst prüfen"],
+              ["Nah zur Unterkunft", "Estádio do Dragão / Alameda nur als Check-Spot"],
+              ["Backup", "Bar vorher anrufen oder kurz vor Ort fragen"],
+              ["Montag danach", "Douro-Treffpunkt 08:50, also nicht komplett übertreiben"]
+            ],
+            bullets: [
+              "Avenida dos Aliados / Praça General Humberto Delgado: beste Chance auf spontane Stadtstimmung, falls Portugal-Fans draussen feiern.",
+              "Galerias de Paris / Baixa: viele Bars nahe beieinander, gut zum Herumlaufen und Screen suchen.",
+              "Bonaparte Downtown: Pub-Option für Bier und Fussball, vorher reservieren oder kurz anrufen.",
+              "Ryan's Bar / Ribeira: touristischer Pub-Bereich, gute Chance auf internationale Fussballstimmung.",
+              "Estádio do Dragão / Alameda: nahe Richtung Unterkunft; nur nehmen, falls dort offiziell etwas angekündigt wird."
+            ],
+            links: [
+              ["Public-Viewing-Karte", maps("Avenida dos Aliados Porto Galerias de Paris Bonaparte Downtown Ryan's Bar Estádio do Dragão")],
+              ["Aliados", maps("Avenida dos Aliados Porto")],
+              ["Galerias", maps("Rua Galeria de Paris Porto")],
+              ["Dragão prüfen", maps("Estádio do Dragão Porto public viewing")]
+            ]
+          }}
         ]
       },
       {
@@ -1301,6 +1328,7 @@
           ${detail.description ? `<p>${detail.description}</p>` : ""}
           ${rows ? `<div class="detail-grid">${rows}</div>` : ""}
           ${bullets ? `<ul class="detail-list">${bullets}</ul>` : ""}
+          ${detail.links ? linkButtons(detail.links) : ""}
         </details>
       `;
     }
